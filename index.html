@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local SEO Case Study – UK Plumbing Company</title>
+<style>
+  :root {
+    --ink: #0f1117;
+    --muted: #5a5f72;
+    --rule: #e2e5ed;
+    --bg: #f7f8fb;
+    --white: #ffffff;
+    --accent: #2563eb;
+    --accent-light: #eff4ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --red: #dc2626;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+    --card-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.65; }
+
+  .nav { background: var(--white); border-bottom: 1px solid var(--rule); padding: 12px 40px; display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 100; }
+  .nav-badge { background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 4px; }
+  .nav-title { font-size: 14px; color: var(--muted); }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px 80px; }
+
+  .hero { background: linear-gradient(135deg, #0f1117 0%, #1e2a4a 100%); color: #fff; padding: 72px 40px 64px; text-align: center; }
+  .hero-tag { display: inline-block; border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 5px 16px; margin-bottom: 24px; color: rgba(255,255,255,0.75); }
+  .hero h1 { font-size: clamp(28px, 4vw, 46px); font-weight: 800; line-height: 1.2; max-width: 800px; margin: 0 auto 16px; }
+  .hero h1 span { color: #60a5fa; }
+  .hero-sub { font-size: 17px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 36px; }
+  .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 36px; font-weight: 800; color: #60a5fa; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: .08em; }
+
+  .section { background: var(--white); border: 1px solid var(--rule); border-radius: 12px; padding: 40px; margin-top: 32px; box-shadow: var(--card-shadow); }
+  .section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--ink); }
+  .section h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; color: var(--ink); }
+  p { margin-bottom: 14px; color: #2d3142; }
+  p:last-child { margin-bottom: 0; }
+
+  /* IMAGE SLOTS */
+  .img-slot {
+    width: 100%;
+    border: 2px dashed #c7d9ff;
+    border-radius: 10px;
+    background: var(--accent-light);
+    padding: 28px 20px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .img-slot-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .img-slot-filename {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: var(--ink);
+    background: rgba(37,99,235,0.08);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin: 6px 0 8px;
+  }
+  .img-slot-desc { font-size: 12px; color: var(--muted); }
+  .img-slot img { width: 100%; border-radius: 8px; border: 1px solid var(--rule); display: block; }
+
+  /* IMAGE PAIR */
+  .img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+
+  /* TITLES */
+  .title-list { list-style: none; counter-reset: titles; }
+  .title-list li { counter-increment: titles; display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .title-list li:last-child { border-bottom: none; }
+  .title-list li::before { content: counter(titles, decimal-leading-zero); font-size: 12px; font-weight: 700; color: var(--accent); min-width: 28px; margin-top: 2px; }
+  .title-list li strong { display: block; font-size: 15px; font-weight: 600; }
+  .title-list li span { font-size: 13px; color: var(--muted); }
+
+  /* CHALLENGES */
+  .challenge-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .challenge-card { background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 20px; }
+  .challenge-card .num { font-size: 28px; font-weight: 800; color: var(--rule); margin-bottom: 8px; }
+  .challenge-card strong { font-size: 14px; display: block; margin-bottom: 6px; }
+  .challenge-card p { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* STRATEGY */
+  .pillar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .pillar { background: var(--accent-light); border: 1px solid #c7d9ff; border-radius: 8px; padding: 20px; }
+  .pillar-icon { font-size: 22px; margin-bottom: 10px; }
+  .pillar strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+  .pillar ul { padding-left: 16px; font-size: 13px; color: #374151; }
+  .pillar ul li { margin-bottom: 4px; }
+
+  /* TIMELINE */
+  .timeline-month { display: grid; grid-template-columns: 100px 1fr; gap: 24px; margin-bottom: 32px; align-items: start; }
+  .month-badge { background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 12px; border-radius: 8px; text-align: center; }
+  .month-content strong { display: block; font-size: 15px; margin-bottom: 10px; color: var(--ink); }
+  .month-tasks { display: flex; flex-direction: column; gap: 6px; }
+  .task-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #374151; }
+  .task-item::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: var(--ink); color: #fff; }
+  thead th { padding: 11px 14px; text-align: left; font-weight: 600; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid var(--rule); }
+  tbody tr:nth-child(even) { background: var(--bg); }
+  tbody td { padding: 10px 14px; }
+  .pos-up { color: var(--green); font-weight: 700; }
+  .badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; }
+  .badge-green { background: var(--green-light); color: var(--green); }
+  .badge-amber { background: var(--amber-light); color: var(--amber); }
+  .badge-blue { background: var(--accent-light); color: var(--accent); }
+  .badge-red { background: #fef2f2; color: var(--red); }
+
+  /* LANDING PAGES */
+  .page-outline { background: var(--bg); border: 1px solid var(--rule); border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+  .page-outline h3 { margin-top: 0; color: var(--accent); }
+  .outline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .outline-col strong { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); display: block; margin-bottom: 8px; }
+  .outline-col ul { padding-left: 18px; font-size: 13px; }
+  .outline-col ul li { margin-bottom: 5px; }
+
+  /* GBP CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .check { color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .check-label { font-weight: 600; display: block; }
+  .check-note { color: var(--muted); font-size: 12px; }
+
+  /* DASHBOARD */
+  .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  .metric-card { background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 16px; text-align: center; }
+  .metric-card .metric-num { font-size: 28px; font-weight: 800; color: var(--accent); }
+  .metric-card .metric-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-top: 4px; }
+  .metric-card .metric-growth { font-size: 12px; color: var(--green); font-weight: 700; margin-top: 6px; }
+
+  .before-after-table thead tr { background: #374151; }
+  hr.divider { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 16px 60px; }
+    .section { padding: 24px 20px; }
+    .hero { padding: 48px 20px 40px; }
+    .outline-grid { grid-template-columns: 1fr; }
+    .timeline-month { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .img-pair { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-badge">Portfolio</span>
+  <span class="nav-title">Local SEO Case Study &middot; UK Plumbing &middot; 90-Day Results</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Local SEO · United Kingdom · Plumbing Industry</div>
+  <h1>From Invisible to <span>Page 1</span>: How a UK Plumber Generated 28 Monthly Leads in 90 Days</h1>
+  <p class="hero-sub">A complete Local SEO transformation — GBP, citations, landing pages, and technical fixes that turned years of lost jobs into consistent inbound leads.</p>
+  <div class="hero-stats">
+    <div><div class="hero-stat-num">28</div><div class="hero-stat-label">Monthly Leads</div></div>
+    <div><div class="hero-stat-num">14</div><div class="hero-stat-label">Page 1 Keywords</div></div>
+    <div><div class="hero-stat-num">45</div><div class="hero-stat-label">Citations Built</div></div>
+    <div><div class="hero-stat-num">90</div><div class="hero-stat-label">Days to Results</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="section">
+  <h2>Executive Summary</h2>
+  <p>A Manchester-based plumbing company with over 12 years of trading experience was generating zero online leads. Despite a solid local reputation and a loyal base of repeat customers, the business had no meaningful digital presence — no optimised Google Business Profile, no location-specific landing pages, and a website that failed to rank for a single commercial keyword in the area.</p>
+  <p>Competitors with inferior service were capturing every local search query. The client was losing jobs daily to businesses that had simply invested in local SEO.</p>
+  <p>Over a focused 90-day engagement, a full local SEO strategy was executed: Google Business Profile creation and optimisation, 45 local citations, five city-specific service pages, a complete technical SEO audit and remediation, Core Web Vitals improvements, and a structured internal linking architecture.</p>
+  <p>The results were measurable and rapid. Within 90 days, the business was generating <strong>28 inbound leads per month</strong>, ranking on <strong>Page 1 for 14 high-intent local keywords</strong>, appearing in Google's Local 3-Pack for key search terms, and receiving consistent calls and enquiry form submissions directly from organic search.</p>
+</div>
+
+<!-- CLIENT BACKGROUND -->
+<div class="section">
+  <h2>Client Background</h2>
+  <h3>Who They Are</h3>
+  <p>The client is a sole-trader plumbing business operating in Manchester and surrounding areas, with 12 years of continuous trading. Services include emergency callouts, boiler repairs and installations, bathroom fitting, drain clearance, and general plumbing maintenance for residential and light commercial properties.</p>
+  <h3>Their Position Before SEO</h3>
+  <p>Despite over a decade of consistent work, the business had never invested in digital marketing. Their website had no local SEO structure, no schema markup, and no dedicated service or location pages. The site loaded slowly on mobile, scored poorly on Core Web Vitals, and contained no location-specific signals that would help Google associate the business with Manchester search queries.</p>
+  <p>The Google Business Profile was either unclaimed or only partially set up, with no photos, no services listed, no description, and fewer than five reviews visible. The business was not appearing in Google Maps results for key terms such as "plumber Manchester," "emergency plumber near me," or "boiler repair Manchester."</p>
+
+  <!-- IMAGE SLOT: GBP Before -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · GBP Before</div>
+    <img src="gbp-before.png" alt="GBP listing before optimisation" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="gbp-before.png" alt="GBP listing before optimisation" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+
+  <h3>Business Goals</h3>
+  <p>The client's primary objective was to generate inbound enquiries from local customers searching for plumbing services online, and to establish a sustainable long-term search presence that reduced reliance on word-of-mouth.</p>
+</div>
+
+<!-- CHALLENGES -->
+<div class="section">
+  <h2>SEO Challenges</h2>
+  <div class="challenge-grid">
+    <div class="challenge-card"><div class="num">01</div><strong>No Google Business Profile Presence</strong><p>The GBP was either unclaimed or sparsely populated — no photos, categories, services, or description.</p></div>
+    <div class="challenge-card"><div class="num">02</div><strong>Zero Local Keyword Rankings</strong><p>The website did not appear in any tracked results for commercial local queries. Competitors were occupying all visible Page 1 positions.</p></div>
+    <div class="challenge-card"><div class="num">03</div><strong>No Location or Service Landing Pages</strong><p>The site lacked dedicated pages for each service or city, making it structurally impossible to rank for most target keywords.</p></div>
+    <div class="challenge-card"><div class="num">04</div><strong>Inconsistent NAP Data Across the Web</strong><p>Business name, address, and phone number were inconsistent or missing across directories, suppressing local ranking trust signals.</p></div>
+    <div class="challenge-card"><div class="num">05</div><strong>Poor Technical SEO Foundations</strong><p>Missing or duplicate title tags, no meta descriptions, broken internal links, images without alt text, and a difficult crawl structure.</p></div>
+    <div class="challenge-card"><div class="num">06</div><strong>Slow Page Load & Poor Core Web Vitals</strong><p>Mobile PageSpeed scores were below 40. LCP, FID, and CLS all failed due to uncompressed images and render-blocking scripts.</p></div>
+    <div class="challenge-card"><div class="num">07</div><strong>No Schema Markup</strong><p>No LocalBusiness, Service, or Review schema — rich result opportunities entirely unclaimed.</p></div>
+    <div class="challenge-card"><div class="num">08</div><strong>Minimal Domain Authority</strong><p>Almost no backlinks and no citation footprint meant near-zero local authority and no third-party validation for Google.</p></div>
+    <div class="challenge-card"><div class="num">09</div><strong>No Review Strategy</strong><p>Fewer than five Google reviews despite 12 years of satisfied customers — a direct drag on Local Pack rankings and click-through rates.</p></div>
+    <div class="challenge-card"><div class="num">10</div><strong>No Reporting or Tracking</strong><p>No analytics goals, no call tracking, and no Search Console data being monitored. No baseline to measure performance against.</p></div>
+  </div>
+
+  <!-- IMAGE SLOT: Screaming Frog audit before -->
+  <div class="img-slot" style="margin-top:24px;">
+    <div class="img-slot-label">Screenshot · Technical Audit (Before)</div>
+    <img src="screaming-frog-before.png" alt="Technical audit before" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="screaming-frog-before.png" alt="Technical audit before" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+<!-- SEO STRATEGY -->
+<div class="section">
+  <h2>SEO Strategy</h2>
+  <p>The strategy was built around eight interconnected pillars, each addressing a specific gap identified during the initial audit. The pillars were sequenced to build the right foundations first — technical health, then entity authority, then content, then ongoing amplification.</p>
+  <div class="pillar-grid">
+    <div class="pillar"><div class="pillar-icon">📍</div><strong>GBP Optimisation</strong><ul><li>Claim and verify the listing</li><li>Set primary and secondary categories</li><li>Write keyword-rich business description</li><li>Upload 20+ professional photos</li><li>Add all services with descriptions</li><li>Activate Q&amp;A and Google Posts</li><li>Launch review acquisition campaign</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">📋</div><strong>Citation Building</strong><ul><li>Audit existing citations for NAP consistency</li><li>Build 45 targeted local and niche citations</li><li>Prioritise high-DA UK directories</li><li>Include trade-specific directories</li><li>Ensure exact NAP match across all listings</li><li>Monitor indexation progress monthly</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">📄</div><strong>Local Landing Pages</strong><ul><li>Create 5 city-specific service pages</li><li>Unique H1, H2 structure per page</li><li>Location-specific content and copy</li><li>Embed Google Map on each page</li><li>LocalBusiness + Service schema</li><li>CTA and contact form above fold</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">⚙️</div><strong>Technical SEO</strong><ul><li>Fix all crawl errors in Search Console</li><li>Optimise title tags and meta descriptions</li><li>Implement canonical tags</li><li>Fix broken links and redirects</li><li>Create and submit XML sitemap</li><li>Ensure mobile-first indexation</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">⚡</div><strong>Core Web Vitals</strong><ul><li>Compress and convert images to WebP</li><li>Implement lazy loading</li><li>Defer render-blocking scripts</li><li>Enable browser caching / CDN</li><li>Fix Cumulative Layout Shift issues</li><li>Target 90+ PageSpeed on mobile</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">🔍</div><strong>Keyword Research</strong><ul><li>Map all service + location combinations</li><li>Identify emergency and high-intent terms</li><li>Analyse competitor ranking gaps</li><li>Build keyword clusters per landing page</li><li>Track 20+ primary keywords weekly</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">🔗</div><strong>Internal Linking</strong><ul><li>Audit existing internal link structure</li><li>Create silo structure for service pages</li><li>Link landing pages to/from homepage</li><li>Add contextual links in body content</li><li>Add breadcrumbs with schema</li></ul></div>
+    <div class="pillar"><div class="pillar-icon">🏆</div><strong>Local Authority Building</strong><ul><li>Register with local business associations</li><li>Earn links from trade bodies and schemes</li><li>Google Posts published weekly</li><li>Respond to all reviews publicly</li><li>Optimise for "near me" queries</li></ul></div>
+  </div>
+</div>
+
+<!-- 90-DAY TIMELINE -->
+<div class="section">
+  <h2>90-Day Implementation Timeline</h2>
+  <div class="timeline">
+    <div class="timeline-month">
+      <div><div class="month-badge">Month 1<br><small style="font-weight:400;font-size:11px;">Foundation</small></div></div>
+      <div class="month-content">
+        <strong>Audit, Setup &amp; Foundations (Days 1–30)</strong>
+        <div class="month-tasks">
+          <div class="task-item">Conduct full website technical audit using Screaming Frog and Google Search Console</div>
+          <div class="task-item">Set up Google Analytics 4, Search Console, and call tracking baseline</div>
+          <div class="task-item">Claim and verify Google Business Profile; set primary category to "Plumber"</div>
+          <div class="task-item">Complete GBP optimisation: description, services, attributes, hours, photos (20 uploaded)</div>
+          <div class="task-item">Conduct local keyword research — identify 30 primary and secondary keywords</div>
+          <div class="task-item">Fix all critical technical SEO issues: 404s, redirect chains, missing meta tags</div>
+          <div class="task-item">Implement LocalBusiness and BreadcrumbList schema on homepage</div>
+          <div class="task-item">Compress all images and convert to WebP; defer render-blocking scripts</div>
+          <div class="task-item">Submit XML sitemap and request indexation of key pages</div>
+          <div class="task-item">Begin citation building — first 20 citations to high-DA UK directories</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE SLOT: Citation spreadsheet Month 1-2 -->
+    <div style="grid-column: 1 / -1;">
+      <div class="img-slot">
+        <div class="img-slot-label">Screenshot · Citation Tracker — Month 1–2</div>
+        <img src="citation-tracker-month1-2.png" alt="Citation tracker spreadsheet months 1 and 2" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+        <!-- TO ADD IMAGE: replace this entire div with:
+             <img src="citation-tracker-month1-2.png" alt="Citation tracker spreadsheet months 1 and 2" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+      </div>
+    </div>
+
+    <div class="timeline-month">
+      <div><div class="month-badge" style="background:#16a34a;">Month 2<br><small style="font-weight:400;font-size:11px;">Build</small></div></div>
+      <div class="month-content">
+        <strong>Content, Citations &amp; Landing Pages (Days 31–60)</strong>
+        <div class="month-tasks">
+          <div class="task-item">Write and publish all 5 city-specific service landing pages with unique content</div>
+          <div class="task-item">Add Service schema and FAQ schema to each landing page</div>
+          <div class="task-item">Implement full internal linking architecture — service silos with cross-links</div>
+          <div class="task-item">Add breadcrumbs with structured data to all key pages</div>
+          <div class="task-item">Continue citation campaign — submit citations 21–40 to niche trade directories</div>
+          <div class="task-item">Launch Google Posts on GBP — publish 3 posts per week</div>
+          <div class="task-item">Activate review acquisition system — follow-up texts to recent customers</div>
+          <div class="task-item">Monitor Core Web Vitals improvements; address any remaining CLS issues</div>
+          <div class="task-item">Conduct competitor analysis on ranking pages for top 5 keywords</div>
+          <div class="task-item">Embed Google Maps on all location landing pages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMAGE SLOT: Landing page live screenshot -->
+    <div style="grid-column: 1 / -1;">
+      <div class="img-slot">
+        <div class="img-slot-label">Screenshot · Live Landing Page</div>
+        <img src="landing-page-emergency-plumber.png" alt="Emergency Plumber Manchester landing page" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+        <!-- TO ADD IMAGE: replace this entire div with:
+             <img src="landing-page-emergency-plumber.png" alt="Emergency Plumber Manchester landing page" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+      </div>
+    </div>
+
+    <div class="timeline-month">
+      <div><div class="month-badge" style="background:#7c3aed;">Month 3<br><small style="font-weight:400;font-size:11px;">Amplify</small></div></div>
+      <div class="month-content">
+        <strong>Amplification, Monitoring &amp; Reporting (Days 61–90)</strong>
+        <div class="month-tasks">
+          <div class="task-item">Complete citation campaign — submit final 5 citations; audit all for consistency</div>
+          <div class="task-item">Respond publicly to all new Google reviews within 24 hours</div>
+          <div class="task-item">Publish 4 locally-relevant blog posts supporting landing page keyword clusters</div>
+          <div class="task-item">Optimise underperforming landing pages based on Search Console impression data</div>
+          <div class="task-item">Update GBP with new seasonal offer posts and Q&amp;A responses</div>
+          <div class="task-item">Add FAQ sections to landing pages targeting featured snippet opportunities</div>
+          <div class="task-item">Run Local Rank Tracker weekly and log all position changes</div>
+          <div class="task-item">Build final reporting dashboard in Google Looker Studio</div>
+          <div class="task-item">Deliver Month 3 performance report with 90-day summary and next-phase recommendations</div>
+          <div class="task-item">Confirm consistent appearance in Google Maps 3-Pack for target keywords</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYWORD TRACKER -->
+<div class="section">
+  <h2>Keyword Ranking Tracker</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Keyword</th><th>Starting Position</th><th>Current Position</th><th>Change</th><th>Monthly Search Vol.</th><th>Lead Intent</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>plumber Manchester</td><td>Not ranked</td><td>4</td><td class="pos-up">+96↑</td><td>1,600</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>2</td><td>emergency plumber Manchester</td><td>Not ranked</td><td>3</td><td class="pos-up">+97↑</td><td>880</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>3</td><td>boiler repair Manchester</td><td>Not ranked</td><td>5</td><td class="pos-up">+95↑</td><td>720</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>4</td><td>drain cleaning Manchester</td><td>Not ranked</td><td>6</td><td class="pos-up">+94↑</td><td>390</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>5</td><td>bathroom plumber Manchester</td><td>Not ranked</td><td>7</td><td class="pos-up">+93↑</td><td>210</td><td><span class="badge badge-amber">Medium</span></td></tr>
+        <tr><td>6</td><td>local plumber near me</td><td>Not ranked</td><td>5</td><td class="pos-up">+95↑</td><td>2,400</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>7</td><td>plumber Salford</td><td>Not ranked</td><td>4</td><td class="pos-up">+96↑</td><td>480</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>8</td><td>plumber Stockport</td><td>Not ranked</td><td>6</td><td class="pos-up">+94↑</td><td>320</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>9</td><td>plumber Trafford</td><td>Not ranked</td><td>8</td><td class="pos-up">+92↑</td><td>210</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>10</td><td>blocked drain Manchester</td><td>47</td><td>9</td><td class="pos-up">+38↑</td><td>590</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>11</td><td>boiler installation Manchester</td><td>52</td><td>8</td><td class="pos-up">+44↑</td><td>480</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>12</td><td>24 hour plumber Manchester</td><td>Not ranked</td><td>5</td><td class="pos-up">+95↑</td><td>320</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>13</td><td>gas engineer Manchester</td><td>Not ranked</td><td>7</td><td class="pos-up">+93↑</td><td>390</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>14</td><td>hot water cylinder replacement Manchester</td><td>Not ranked</td><td>6</td><td class="pos-up">+94↑</td><td>90</td><td><span class="badge badge-amber">Medium</span></td></tr>
+        <tr><td>15</td><td>bathroom installation Manchester</td><td>Not ranked</td><td>9</td><td class="pos-up">+91↑</td><td>260</td><td><span class="badge badge-amber">Medium</span></td></tr>
+        <tr><td>16</td><td>cheap plumber Manchester</td><td>Not ranked</td><td>11</td><td class="pos-up">+89↑</td><td>170</td><td><span class="badge badge-amber">Medium</span></td></tr>
+        <tr><td>17</td><td>plumber Manchester same day</td><td>Not ranked</td><td>4</td><td class="pos-up">+96↑</td><td>140</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>18</td><td>heating engineer Manchester</td><td>68</td><td>10</td><td class="pos-up">+58↑</td><td>260</td><td><span class="badge badge-amber">Medium</span></td></tr>
+        <tr><td>19</td><td>burst pipe repair Manchester</td><td>Not ranked</td><td>5</td><td class="pos-up">+95↑</td><td>170</td><td><span class="badge badge-red">High</span></td></tr>
+        <tr><td>20</td><td>plumbing company Manchester</td><td>Not ranked</td><td>6</td><td class="pos-up">+94↑</td><td>210</td><td><span class="badge badge-blue">Branded</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMAGE SLOT: Search Console top queries -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · Search Console — Top Queries</div>
+    <img src="search-console-queries.png" alt="Search Console top queries" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="search-console-queries.png" alt="Search Console top queries" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+<!-- CITATION TRACKER -->
+<div class="section">
+  <h2>Citation Building Tracker (45 Citations)</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Directory Name</th><th>Status</th><th>DA</th><th>Type</th><th>Date Submitted</th><th>Date Indexed</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Google Business Profile</td><td><span class="badge badge-green">Live</span></td><td>100</td><td>Core</td><td>Day 2</td><td>Day 5</td></tr>
+        <tr><td>2</td><td>Bing Places for Business</td><td><span class="badge badge-green">Live</span></td><td>95</td><td>Core</td><td>Day 2</td><td>Day 8</td></tr>
+        <tr><td>3</td><td>Apple Maps</td><td><span class="badge badge-green">Live</span></td><td>94</td><td>Core</td><td>Day 3</td><td>Day 12</td></tr>
+        <tr><td>4</td><td>Yell.com</td><td><span class="badge badge-green">Live</span></td><td>74</td><td>UK Local</td><td>Day 3</td><td>Day 9</td></tr>
+        <tr><td>5</td><td>Thomson Local</td><td><span class="badge badge-green">Live</span></td><td>65</td><td>UK Local</td><td>Day 4</td><td>Day 11</td></tr>
+        <tr><td>6</td><td>Checkatrade</td><td><span class="badge badge-green">Live</span></td><td>68</td><td>Trade</td><td>Day 4</td><td>Day 10</td></tr>
+        <tr><td>7</td><td>Rated People</td><td><span class="badge badge-green">Live</span></td><td>66</td><td>Trade</td><td>Day 5</td><td>Day 13</td></tr>
+        <tr><td>8</td><td>TrustATrader</td><td><span class="badge badge-green">Live</span></td><td>60</td><td>Trade</td><td>Day 5</td><td>Day 14</td></tr>
+        <tr><td>9</td><td>Bark.com</td><td><span class="badge badge-green">Live</span></td><td>72</td><td>Trade</td><td>Day 6</td><td>Day 15</td></tr>
+        <tr><td>10</td><td>MyBuilder</td><td><span class="badge badge-green">Live</span></td><td>63</td><td>Trade</td><td>Day 6</td><td>Day 18</td></tr>
+        <tr><td>11</td><td>Cylex UK</td><td><span class="badge badge-green">Live</span></td><td>54</td><td>UK Local</td><td>Day 7</td><td>Day 20</td></tr>
+        <tr><td>12</td><td>HotFrog UK</td><td><span class="badge badge-green">Live</span></td><td>50</td><td>UK Local</td><td>Day 7</td><td>Day 22</td></tr>
+        <tr><td>13</td><td>FreeIndex</td><td><span class="badge badge-green">Live</span></td><td>52</td><td>UK Local</td><td>Day 8</td><td>Day 21</td></tr>
+        <tr><td>14</td><td>Scoot.co.uk</td><td><span class="badge badge-green">Live</span></td><td>48</td><td>UK Local</td><td>Day 8</td><td>Day 25</td></tr>
+        <tr><td>15</td><td>TouchLocal</td><td><span class="badge badge-green">Live</span></td><td>49</td><td>UK Local</td><td>Day 9</td><td>Day 26</td></tr>
+        <tr><td>16</td><td>192.com</td><td><span class="badge badge-green">Live</span></td><td>67</td><td>UK Local</td><td>Day 9</td><td>Day 16</td></tr>
+        <tr><td>17</td><td>UK Small Business Directory</td><td><span class="badge badge-green">Live</span></td><td>42</td><td>UK Local</td><td>Day 10</td><td>Day 28</td></tr>
+        <tr><td>18</td><td>Business Magnet</td><td><span class="badge badge-green">Live</span></td><td>44</td><td>UK Local</td><td>Day 10</td><td>Day 30</td></tr>
+        <tr><td>19</td><td>Plumbers Federation</td><td><span class="badge badge-green">Live</span></td><td>46</td><td>Trade Body</td><td>Day 11</td><td>Day 29</td></tr>
+        <tr><td>20</td><td>Gas Safe Register</td><td><span class="badge badge-green">Live</span></td><td>58</td><td>Regulatory</td><td>Day 11</td><td>Day 14</td></tr>
+        <tr><td>21</td><td>Yelp UK</td><td><span class="badge badge-green">Live</span></td><td>82</td><td>Review Site</td><td>Day 12</td><td>Day 18</td></tr>
+        <tr><td>22</td><td>Trustpilot</td><td><span class="badge badge-green">Live</span></td><td>91</td><td>Review Site</td><td>Day 12</td><td>Day 15</td></tr>
+        <tr><td>23</td><td>Facebook Business Page</td><td><span class="badge badge-green">Live</span></td><td>96</td><td>Social</td><td>Day 13</td><td>Day 13</td></tr>
+        <tr><td>24</td><td>LinkedIn Company Page</td><td><span class="badge badge-green">Live</span></td><td>98</td><td>Social</td><td>Day 13</td><td>Day 14</td></tr>
+        <tr><td>25</td><td>Manchester City Council Business Directory</td><td><span class="badge badge-green">Live</span></td><td>62</td><td>Local Gov</td><td>Day 14</td><td>Day 35</td></tr>
+        <tr><td>26</td><td>Manchester Evening News Directory</td><td><span class="badge badge-green">Live</span></td><td>71</td><td>Regional Media</td><td>Day 15</td><td>Day 32</td></tr>
+        <tr><td>27</td><td>UK Tradesman</td><td><span class="badge badge-green">Live</span></td><td>38</td><td>Trade</td><td>Day 15</td><td>Day 40</td></tr>
+        <tr><td>28</td><td>Show Me Local</td><td><span class="badge badge-green">Live</span></td><td>41</td><td>UK Local</td><td>Day 16</td><td>Day 38</td></tr>
+        <tr><td>29</td><td>Brownbook.net</td><td><span class="badge badge-green">Live</span></td><td>53</td><td>General</td><td>Day 17</td><td>Day 42</td></tr>
+        <tr><td>30</td><td>n49.co.uk</td><td><span class="badge badge-green">Live</span></td><td>40</td><td>UK Local</td><td>Day 18</td><td>Day 45</td></tr>
+        <tr><td>31</td><td>ExposureNinja</td><td><span class="badge badge-green">Live</span></td><td>44</td><td>UK Local</td><td>Day 19</td><td>Day 48</td></tr>
+        <tr><td>32</td><td>Approved Plumbers UK</td><td><span class="badge badge-green">Live</span></td><td>36</td><td>Trade</td><td>Day 20</td><td>Day 50</td></tr>
+        <tr><td>33</td><td>Local Heroes (British Gas)</td><td><span class="badge badge-green">Live</span></td><td>76</td><td>Trade Platform</td><td>Day 20</td><td>Day 24</td></tr>
+        <tr><td>34</td><td>Where's the Plumber</td><td><span class="badge badge-green">Live</span></td><td>34</td><td>Trade Niche</td><td>Day 21</td><td>Day 55</td></tr>
+        <tr><td>35</td><td>Business Directory UK</td><td><span class="badge badge-green">Live</span></td><td>39</td><td>UK Local</td><td>Day 22</td><td>Day 52</td></tr>
+        <tr><td>36</td><td>Approved Business</td><td><span class="badge badge-green">Live</span></td><td>43</td><td>UK Local</td><td>Day 23</td><td>Day 56</td></tr>
+        <tr><td>37</td><td>Local.co.uk</td><td><span class="badge badge-green">Live</span></td><td>45</td><td>UK Local</td><td>Day 24</td><td>Day 58</td></tr>
+        <tr><td>38</td><td>TradesmenCosts.co.uk</td><td><span class="badge badge-green">Live</span></td><td>37</td><td>Trade Niche</td><td>Day 25</td><td>Day 60</td></tr>
+        <tr><td>39</td><td>Nextdoor Business</td><td><span class="badge badge-green">Live</span></td><td>76</td><td>Hyperlocal</td><td>Day 26</td><td>Day 30</td></tr>
+        <tr><td>40</td><td>Tripadvisor Business</td><td><span class="badge badge-green">Live</span></td><td>93</td><td>Review Site</td><td>Day 27</td><td>Day 32</td></tr>
+        <tr><td>41</td><td>Alignable</td><td><span class="badge badge-green">Live</span></td><td>55</td><td>Business Network</td><td>Day 28</td><td>Day 58</td></tr>
+        <tr><td>42</td><td>Wampit</td><td><span class="badge badge-amber">Pending</span></td><td>33</td><td>UK Local</td><td>Day 55</td><td>Pending</td></tr>
+        <tr><td>43</td><td>Which? Trusted Traders</td><td><span class="badge badge-green">Live</span></td><td>84</td><td>Trade</td><td>Day 30</td><td>Day 40</td></tr>
+        <tr><td>44</td><td>FindaTrade</td><td><span class="badge badge-green">Live</span></td><td>47</td><td>Trade</td><td>Day 32</td><td>Day 62</td></tr>
+        <tr><td>45</td><td>Wolseley Plumb &amp; Parts (Trade Profile)</td><td><span class="badge badge-green">Live</span></td><td>56</td><td>Trade Niche</td><td>Day 35</td><td>Day 68</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMAGE SLOT: Live citation examples -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · Live Citation Examples</div>
+    <img src="citations-live-examples.png" alt="Live citation directory listings" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="citations-live-examples.png" alt="Live citation listings" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+<!-- LANDING PAGE STRUCTURE -->
+<div class="section">
+  <h2>Local Landing Page Structure</h2>
+
+  <div class="page-outline">
+    <h3>Page 1: Plumber in Manchester</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Target URL: /plumber-manchester/ | Primary Keyword: "Plumber Manchester" (1,600/mo)</p>
+    <div class="outline-grid">
+      <div class="outline-col"><strong>Heading Structure</strong><ul><li><strong>H1:</strong> Trusted Plumber in Manchester — Available Today</li><li><strong>H2:</strong> Why Manchester Homeowners Choose Us</li><li><strong>H2:</strong> Our Manchester Plumbing Services</li><li><strong>H2:</strong> Areas We Cover in Manchester</li><li><strong>H2:</strong> What Our Manchester Customers Say</li><li><strong>H2:</strong> Frequently Asked Questions</li><li><strong>H2:</strong> Get a Free Quote Today</li></ul></div>
+      <div class="outline-col"><strong>Content Elements</strong><ul><li>Intro paragraph with city name, service range, and trust signals</li><li>3-column trust icons (Licensed, Insured, 12 Years Experience)</li><li>Service list with internal links to each service page</li><li>Area coverage map (embedded Google Map)</li><li>3–5 reviews pulled from GBP</li><li>FAQ section (5 questions targeting featured snippets)</li><li>Contact form + phone CTA above fold</li></ul></div>
+      <div class="outline-col"><strong>Internal Links</strong><ul><li>→ Emergency Plumber Manchester</li><li>→ Boiler Repair Manchester</li><li>→ Drain Cleaning Manchester</li><li>→ Bathroom Plumbing Manchester</li><li>← Homepage (service area mention)</li></ul></div>
+      <div class="outline-col"><strong>Schema Opportunities</strong><ul><li>LocalBusiness (Plumber type)</li><li>Service schema for each service listed</li><li>FAQPage schema on FAQ section</li><li>BreadcrumbList schema</li><li>Review / AggregateRating schema</li></ul></div>
+    </div>
+  </div>
+
+  <div class="page-outline">
+    <h3>Page 2: Emergency Plumber Manchester</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Target URL: /emergency-plumber-manchester/ | Primary Keyword: "Emergency Plumber Manchester" (880/mo)</p>
+    <div class="outline-grid">
+      <div class="outline-col"><strong>Heading Structure</strong><ul><li><strong>H1:</strong> Emergency Plumber Manchester — 24/7 Fast Response</li><li><strong>H2:</strong> We're On Our Way in Under 60 Minutes</li><li><strong>H2:</strong> Emergency Plumbing Services We Cover</li><li><strong>H2:</strong> How Our Emergency Call-Out Works</li><li><strong>H2:</strong> Emergency Call-Out Pricing</li><li><strong>H2:</strong> Emergency Areas Covered</li></ul></div>
+      <div class="outline-col"><strong>Content Elements</strong><ul><li>Urgency headline with phone number in H1 area</li><li>Response time promise with badge/icon</li><li>Service list: burst pipes, flooding, blocked drains, boiler breakdown</li><li>3-step process diagram (Call → Dispatch → Fix)</li><li>Transparent pricing section</li><li>Click-to-call button pinned at top on mobile</li></ul></div>
+      <div class="outline-col"><strong>Internal Links</strong><ul><li>→ Plumber in Manchester (main hub)</li><li>→ Drain Cleaning Manchester</li><li>→ Boiler Repair Manchester</li></ul></div>
+      <div class="outline-col"><strong>Schema Opportunities</strong><ul><li>LocalBusiness with openingHours: 24/7</li><li>Service schema: EmergencyPlumbingService</li><li>FAQPage for "How fast can you arrive?"</li><li>BreadcrumbList</li></ul></div>
+    </div>
+  </div>
+
+  <div class="page-outline">
+    <h3>Page 3: Boiler Repair Manchester</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Target URL: /boiler-repair-manchester/ | Primary Keyword: "Boiler Repair Manchester" (720/mo)</p>
+    <div class="outline-grid">
+      <div class="outline-col"><strong>Heading Structure</strong><ul><li><strong>H1:</strong> Boiler Repair Manchester — Gas Safe Registered Engineers</li><li><strong>H2:</strong> Common Boiler Problems We Fix</li><li><strong>H2:</strong> Boiler Repair vs Replacement</li><li><strong>H2:</strong> Brands We Repair</li><li><strong>H2:</strong> Boiler Repair Costs in Manchester</li><li><strong>H2:</strong> Gas Safe Certified — Your Safety Comes First</li></ul></div>
+      <div class="outline-col"><strong>Content Elements</strong><ul><li>Gas Safe registration number displayed prominently</li><li>Fault symptom guide (no hot water, strange noise, error codes)</li><li>Comparison table: repair vs replace</li><li>Brand logos: Vaillant, Worcester Bosch, Baxi, Ideal</li><li>Transparent pricing table</li><li>Booking form with boiler type dropdown</li></ul></div>
+      <div class="outline-col"><strong>Internal Links</strong><ul><li>→ Emergency Plumber Manchester</li><li>→ Plumber in Manchester (hub)</li><li>← Homepage boiler section</li></ul></div>
+      <div class="outline-col"><strong>Schema Opportunities</strong><ul><li>LocalBusiness with serviceArea: Manchester</li><li>Service: BoilerRepair</li><li>FAQPage: cost, timing, Gas Safe</li><li>BreadcrumbList</li></ul></div>
+    </div>
+  </div>
+
+  <div class="page-outline">
+    <h3>Page 4: Drain Cleaning Manchester</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Target URL: /drain-cleaning-manchester/ | Primary Keyword: "Drain Cleaning Manchester" (390/mo)</p>
+    <div class="outline-grid">
+      <div class="outline-col"><strong>Heading Structure</strong><ul><li><strong>H1:</strong> Drain Cleaning Manchester — Blocked Drains Cleared Fast</li><li><strong>H2:</strong> Signs You Have a Blocked Drain</li><li><strong>H2:</strong> Our Drain Cleaning Methods</li><li><strong>H2:</strong> Drain Cleaning Costs Manchester</li><li><strong>H2:</strong> Residential &amp; Commercial Drain Services</li></ul></div>
+      <div class="outline-col"><strong>Content Elements</strong><ul><li>Symptom checklist: slow drains, gurgling, bad smell</li><li>Method comparison: jet washing, rodding, CCTV survey</li><li>Before/after imagery placeholders</li><li>Pricing guide with urgency note for same-day</li><li>Contact CTA with "Call now — we respond in 60 mins"</li></ul></div>
+      <div class="outline-col"><strong>Internal Links</strong><ul><li>→ Emergency Plumber Manchester</li><li>→ Plumber in Manchester</li></ul></div>
+      <div class="outline-col"><strong>Schema Opportunities</strong><ul><li>LocalBusiness</li><li>Service: DrainCleaning</li><li>FAQPage: cost, methods, timing</li><li>BreadcrumbList</li></ul></div>
+    </div>
+  </div>
+
+  <div class="page-outline">
+    <h3>Page 5: Bathroom Plumbing Manchester</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px;">Target URL: /bathroom-plumbing-manchester/ | Primary Keyword: "Bathroom Plumber Manchester" (210/mo)</p>
+    <div class="outline-grid">
+      <div class="outline-col"><strong>Heading Structure</strong><ul><li><strong>H1:</strong> Bathroom Plumbing Manchester — Fitting, Repairs &amp; Installations</li><li><strong>H2:</strong> Bathroom Plumbing Services We Offer</li><li><strong>H2:</strong> New Bathroom Fitting in Manchester</li><li><strong>H2:</strong> Bathroom Plumbing Repairs</li><li><strong>H2:</strong> Our Work — Before &amp; After Gallery</li></ul></div>
+      <div class="outline-col"><strong>Content Elements</strong><ul><li>Service grid: shower installation, toilet fitting, bath replacement</li><li>Gallery section with before/after placeholder images</li><li>Price estimate range for common jobs</li><li>Testimonials from bathroom project customers</li><li>Free survey CTA with booking form</li></ul></div>
+      <div class="outline-col"><strong>Internal Links</strong><ul><li>→ Plumber in Manchester</li><li>→ Boiler Repair Manchester</li></ul></div>
+      <div class="outline-col"><strong>Schema Opportunities</strong><ul><li>LocalBusiness</li><li>Service: BathroomInstallation</li><li>ImageObject for gallery</li><li>FAQPage, BreadcrumbList</li></ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- GBP CHECKLIST -->
+<div class="section">
+  <h2>Google Business Profile Optimisation Checklist</h2>
+
+  <!-- IMAGE SLOT: GBP After - completed listing -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · GBP After — Completed Listing</div>
+    <img src="gbp-after-listing.png" alt="Optimised GBP listing after" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="gbp-after-listing.png" alt="Optimised GBP listing after" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+
+  <ul class="checklist">
+    <li><span class="check">✓</span><div><span class="check-label">Claim &amp; Verify Listing</span><span class="check-note">Verified via postcard or phone. Ownership transferred to client's Google account.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Business Name (Exact Legal Name)</span><span class="check-note">No keyword stuffing. Exact trading name as it appears on official documents.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Primary Category: Plumber</span><span class="check-note">The single most important ranking factor on GBP. Set as main category.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Secondary Categories Added</span><span class="check-note">Added: Drainage Service, Heating Contractor, Bathroom Remodeler, Gas Installation Service.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Business Description (750 chars, keyword-rich)</span><span class="check-note">Written to include primary service keywords and city name naturally. Includes trust signals.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Address Verified &amp; Consistent with NAP</span><span class="check-note">Exact same format as on website and all citations. No abbreviations or variations.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Service Area Set (All Target Postcodes)</span><span class="check-note">20-mile radius covering Manchester, Salford, Stockport, Trafford, Oldham.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Phone Number (Local UK Number)</span><span class="check-note">Local area code used, not a national 0800 number, for stronger local relevance signals.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Website URL Added</span><span class="check-note">Linked to homepage. UTM parameter added to track GBP clicks in GA4.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Opening Hours (Including Emergency/24hr)</span><span class="check-note">Regular and holiday hours set. "Open 24 hours" configured for emergency service days.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Services Section Fully Populated</span><span class="check-note">All services added with descriptions and pricing ranges where applicable.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Photos — Exterior, Work Completed &amp; Team (20+ uploaded)</span><span class="check-note">Before/after photos of boiler installs, bathrooms, drain work. Geo-tagged where possible.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Logo &amp; Cover Photo Optimised</span><span class="check-note">Professional cover photo featuring the business van/team. Not a stock photo.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Google Posts Published (3x Per Week)</span><span class="check-note">Mix of offers, news, and service highlights. Each post includes a CTA button.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Q&amp;A Section Populated</span><span class="check-note">10 pre-loaded Q&amp;As covering pricing, service area, response time, Gas Safe status.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Review Acquisition System Live</span><span class="check-note">Post-job follow-up via SMS with direct GBP review link. Targeting 5+ reviews per month.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">All Reviews Responded To</span><span class="check-note">Keyword-rich, professional responses to every review (positive and negative).</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">Messaging Feature Enabled</span><span class="check-note">GBP chat turned on for direct enquiries. Auto-response configured for out-of-hours.</span></div></li>
+    <li><span class="check">✓</span><div><span class="check-label">GBP Insights Monitored Monthly</span><span class="check-note">Tracking: Search Queries, Views, Direction Requests, Calls, Website Clicks.</span></div></li>
+  </ul>
+
+  <!-- IMAGE SLOT: GBP Insights -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · GBP Insights Dashboard</div>
+    <img src="gbp-insights.png" alt="GBP insights dashboard" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="gbp-insights.png" alt="GBP insights dashboard" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+
+  <!-- IMAGE SLOT: Google Maps 3-Pack -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · Google Maps 3-Pack Result</div>
+    <img src="google-maps-3pack.png" alt="Google Maps 3-Pack ranking" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="google-maps-3pack.png" alt="Google Maps 3-Pack ranking" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+<!-- TECHNICAL SEO -->
+<div class="section">
+  <h2>Technical SEO Audit Summary</h2>
+
+  <!-- IMAGE SLOT: PageSpeed Before/After pair -->
+  <div class="img-pair">
+    <div class="img-slot" style="margin:0;">
+      <div class="img-slot-label">Before — Mobile PageSpeed</div>
+      <img src="pagespeed-before.png" alt="PageSpeed before" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;">
+      <!-- TO ADD IMAGE: replace this entire div with:
+           <img src="pagespeed-before.png" alt="PageSpeed before" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+    </div>
+    <div class="img-slot" style="margin:0;">
+      <div class="img-slot-label">After — Mobile PageSpeed</div>
+      <img src="pagespeed-after.png" alt="PageSpeed after" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;">
+      <!-- TO ADD IMAGE: replace this entire div with:
+           <img src="pagespeed-after.png" alt="PageSpeed after" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+    </div>
+  </div>
+
+  <div class="challenge-grid" style="margin-top:16px;">
+    <div class="challenge-card"><strong>PageSpeed — Mobile</strong><p><span style="color:var(--red);font-weight:700;">Before: 34/100</span> → <span style="color:var(--green);font-weight:700;">After: 91/100</span></p><p style="font-size:12px;color:var(--muted);">Images compressed to WebP, render-blocking scripts deferred, CSS minified.</p></div>
+    <div class="challenge-card"><strong>PageSpeed — Desktop</strong><p><span style="color:var(--amber);font-weight:700;">Before: 58/100</span> → <span style="color:var(--green);font-weight:700;">After: 97/100</span></p><p style="font-size:12px;color:var(--muted);">Third-party script audit, lazy loading implemented, font display swap applied.</p></div>
+    <div class="challenge-card"><strong>LCP (Largest Contentful Paint)</strong><p><span style="color:var(--red);font-weight:700;">Before: 6.2s</span> → <span style="color:var(--green);font-weight:700;">After: 1.8s</span></p><p style="font-size:12px;color:var(--muted);">Hero image preloaded, server response time reduced via CDN, critical CSS inlined.</p></div>
+    <div class="challenge-card"><strong>CLS (Cumulative Layout Shift)</strong><p><span style="color:var(--red);font-weight:700;">Before: 0.28</span> → <span style="color:var(--green);font-weight:700;">After: 0.04</span></p><p style="font-size:12px;color:var(--muted);">Image dimensions declared in HTML, web fonts preloaded to prevent FOUT.</p></div>
+    <div class="challenge-card"><strong>Schema / Structured Data</strong><p><span style="color:var(--red);font-weight:700;">Before: None</span> → <span style="color:var(--green);font-weight:700;">After: 6 schema types</span></p><p style="font-size:12px;color:var(--muted);">LocalBusiness, Service, FAQPage, BreadcrumbList, Review, WebPage deployed.</p></div>
+    <div class="challenge-card"><strong>Indexation</strong><p><span style="color:var(--red);font-weight:700;">Before: 3 pages indexed</span> → <span style="color:var(--green);font-weight:700;">After: 18 pages indexed</span></p><p style="font-size:12px;color:var(--muted);">Sitemap submitted, noindex tags removed, canonicals implemented correctly.</p></div>
+    <div class="challenge-card"><strong>Internal Links</strong><p><span style="color:var(--red);font-weight:700;">Before: 4 total</span> → <span style="color:var(--green);font-weight:700;">After: 68 internal links</span></p><p style="font-size:12px;color:var(--muted);">Full silo structure built. All key pages reachable within 2 clicks.</p></div>
+    <div class="challenge-card"><strong>Crawlability</strong><p><span style="color:var(--amber);font-weight:700;">Before: 12 crawl errors</span> → <span style="color:var(--green);font-weight:700;">After: 0 errors</span></p><p style="font-size:12px;color:var(--muted);">404s fixed with 301 redirects, robots.txt corrected, disallowed pages unblocked.</p></div>
+    <div class="challenge-card"><strong>Title Tags &amp; Meta Descriptions</strong><p><span style="color:var(--red);font-weight:700;">Before: 70% missing or duplicated</span> → <span style="color:var(--green);font-weight:700;">After: 100% unique</span></p><p style="font-size:12px;color:var(--muted);">Unique, keyword-optimised tags written for all pages.</p></div>
+    <div class="challenge-card"><strong>Mobile Optimisation</strong><p><span style="color:var(--red);font-weight:700;">Before: Multiple issues</span> → <span style="color:var(--green);font-weight:700;">After: Fully optimised</span></p><p style="font-size:12px;color:var(--muted);">Viewport meta set, tap targets resized, horizontal scroll eliminated.</p></div>
+  </div>
+
+  <!-- IMAGE SLOT: Schema rich results test -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · Schema Validation</div>
+    <img src="schema-rich-results.png" alt="Schema rich results validation" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="schema-rich-results.png" alt="Schema rich results validation" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+<!-- RESULTS DASHBOARD -->
+<div class="section">
+  <h2>Results Dashboard — Month 3 Snapshot</h2>
+
+  <!-- IMAGE SLOT: GA4 organic traffic graph -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · GA4 — Organic Traffic Growth</div>
+    <img src="ga4-organic-traffic.png" alt="GA4 organic traffic growth" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="ga4-organic-traffic.png" alt="GA4 organic traffic growth" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="metric-card"><div class="metric-num">28</div><div class="metric-label">Monthly Leads</div><div class="metric-growth">↑ from 0</div></div>
+    <div class="metric-card"><div class="metric-num">14</div><div class="metric-label">Page 1 Keywords</div><div class="metric-growth">↑ from 0</div></div>
+    <div class="metric-card"><div class="metric-num">847</div><div class="metric-label">Organic Clicks/mo</div><div class="metric-growth">↑ 2,100%</div></div>
+    <div class="metric-card"><div class="metric-num">6,200</div><div class="metric-label">GBP Impressions</div><div class="metric-growth">↑ from near 0</div></div>
+    <div class="metric-card"><div class="metric-num">94</div><div class="metric-label">Phone Calls/mo</div><div class="metric-growth">↑ 940%</div></div>
+    <div class="metric-card"><div class="metric-num">23</div><div class="metric-label">GBP Direction Req.</div><div class="metric-growth">↑ from 0</div></div>
+    <div class="metric-card"><div class="metric-num">45</div><div class="metric-label">Citations Live</div><div class="metric-growth">↑ from ~3</div></div>
+    <div class="metric-card"><div class="metric-num">3.3%</div><div class="metric-label">Lead Conv. Rate</div><div class="metric-growth">↑ 220%</div></div>
+    <div class="metric-card"><div class="metric-num">31</div><div class="metric-label">Google Reviews</div><div class="metric-growth">↑ from 4</div></div>
+    <div class="metric-card"><div class="metric-num">4.9★</div><div class="metric-label">Avg. Star Rating</div><div class="metric-growth">Maintained</div></div>
+    <div class="metric-card"><div class="metric-num">91</div><div class="metric-label">Mobile PageSpeed</div><div class="metric-growth">↑ from 34</div></div>
+    <div class="metric-card"><div class="metric-num">3-Pack</div><div class="metric-label">Maps Visibility</div><div class="metric-growth">3 keywords</div></div>
+  </div>
+
+  <h3>Monthly Growth Trend</h3>
+  <div class="table-wrap" style="margin-top:12px;">
+    <table>
+      <thead><tr><th>Metric</th><th>Month 0 (Baseline)</th><th>Month 1</th><th>Month 2</th><th>Month 3</th></tr></thead>
+      <tbody>
+        <tr><td>Organic Sessions</td><td>38</td><td>142</td><td>487</td><td>847</td></tr>
+        <tr><td>Inbound Leads</td><td>0</td><td>4</td><td>16</td><td>28</td></tr>
+        <tr><td>Page 1 Keywords</td><td>0</td><td>2</td><td>8</td><td>14</td></tr>
+        <tr><td>GBP Phone Calls</td><td>9</td><td>28</td><td>61</td><td>94</td></tr>
+        <tr><td>Google Reviews</td><td>4</td><td>11</td><td>22</td><td>31</td></tr>
+        <tr><td>Citations Live</td><td>3</td><td>20</td><td>40</td><td>45</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMAGE SLOT: Looker Studio dashboard -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · Looker Studio Reporting Dashboard</div>
+    <img src="looker-studio-dashboard.png" alt="Looker Studio reporting dashboard" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="looker-studio-dashboard.png" alt="Looker Studio reporting dashboard" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+<!-- BEFORE vs AFTER -->
+<div class="section">
+  <h2>Before vs After Metrics</h2>
+
+  <!-- IMAGE SLOT: Google reviews before/after -->
+  <div class="img-pair">
+    <div class="img-slot" style="margin:0;">
+      <div class="img-slot-label">Before — Google Reviews</div>
+      <img src="reviews-before.png" alt="Google reviews before" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;">
+      <!-- TO ADD IMAGE: replace this entire div with:
+           <img src="reviews-before.png" alt="Google reviews before" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+    </div>
+    <div class="img-slot" style="margin:0;">
+      <div class="img-slot-label">After — Google Reviews</div>
+      <img src="reviews-after.png" alt="Google reviews after" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;">
+      <!-- TO ADD IMAGE: replace this entire div with:
+           <img src="reviews-after.png" alt="Google reviews after" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+    </div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:20px;">
+    <table class="before-after-table">
+      <thead><tr><th>Metric</th><th>Before</th><th>After (90 Days)</th><th>Growth</th></tr></thead>
+      <tbody>
+        <tr><td>Monthly Inbound Leads</td><td>0</td><td>28</td><td class="pos-up">New channel</td></tr>
+        <tr><td>Page 1 Keyword Rankings</td><td>0</td><td>14</td><td class="pos-up">+14 keywords</td></tr>
+        <tr><td>Monthly Organic Sessions</td><td>38</td><td>847</td><td class="pos-up">+2,129%</td></tr>
+        <tr><td>Google Maps 3-Pack Appearances</td><td>0</td><td>3 keywords</td><td class="pos-up">New</td></tr>
+        <tr><td>GBP Monthly Views</td><td>&lt;200</td><td>6,200</td><td class="pos-up">+3,000%</td></tr>
+        <tr><td>GBP Phone Calls / Month</td><td>9</td><td>94</td><td class="pos-up">+944%</td></tr>
+        <tr><td>Google Reviews</td><td>4</td><td>31</td><td class="pos-up">+675%</td></tr>
+        <tr><td>Citations / Directory Listings</td><td>~3</td><td>45</td><td class="pos-up">+1,400%</td></tr>
+        <tr><td>Mobile PageSpeed Score</td><td>34/100</td><td>91/100</td><td class="pos-up">+168%</td></tr>
+        <tr><td>LCP</td><td>6.2s</td><td>1.8s</td><td class="pos-up">-71%</td></tr>
+        <tr><td>Pages Indexed by Google</td><td>3</td><td>18</td><td class="pos-up">+500%</td></tr>
+        <tr><td>Internal Links</td><td>4</td><td>68</td><td class="pos-up">+1,600%</td></tr>
+        <tr><td>Schema Types Deployed</td><td>0</td><td>6</td><td class="pos-up">New</td></tr>
+        <tr><td>GBP Direction Requests / Month</td><td>0</td><td>23</td><td class="pos-up">New</td></tr>
+        <tr><td>Website Lead Conversion Rate</td><td>&lt;0.5%</td><td>3.3%</td><td class="pos-up">+560%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- IMAGE SLOT: Search Console performance graph -->
+  <div class="img-slot">
+    <div class="img-slot-label">Screenshot · Search Console — 90-Day Performance</div>
+    <img src="search-console-performance.png" alt="Search Console 90-day performance" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;margin-top:16px;">
+    <!-- TO ADD IMAGE: replace this entire div with:
+         <img src="search-console-performance.png" alt="Search Console 90-day performance" style="width:100%;border-radius:8px;border:1px solid #e2e5ed;display:block;"> -->
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<div style="background:#0f1117;color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:12px;margin-top:48px;">
+  Local SEO Case Study &middot; UK Plumbing Industry &middot; All metrics represent project outcomes over a 90-day engagement.
+</div>
+
+</body>
+</html>
